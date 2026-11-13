@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#11131a"><title>VoiceChat</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<div id="authGate" class="auth-gate"><div class="auth-card"><div class="brand-mark auth-brand">V<span>●</span></div><div class="eyebrow accent">VOICE COMMUNITY</div><h1 id="authTitle">С возвращением</h1><p id="authSubtitle">Войди, чтобы продолжить общение.</p>
+  <form id="loginForm" class="auth-form"><label>Email<input id="loginEmail" type="email" autocomplete="email" required placeholder="name@example.com"></label><label>Пароль<input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="Минимум 8 символов"></label><button class="primary-btn" type="submit">Войти</button><button class="auth-link" type="button" id="forgotPassword">Забыл пароль?</button><button class="auth-link" type="button" id="showRegister">Создать аккаунт</button></form>
+  <form id="registerForm" class="auth-form hidden"><label>Имя пользователя<input id="registerName" maxlength="32" placeholder="Как тебя называть"></label><label>Email<input id="registerEmail" type="email" autocomplete="email" required placeholder="name@example.com"></label><label>Пароль<input id="registerPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Минимум 8 символов"></label><button class="primary-btn" type="submit">Зарегистрироваться</button><button class="auth-link" type="button" id="showLogin">Уже есть аккаунт? Войти</button></form>
+  <form id="forgotForm" class="auth-form hidden"><label>Email аккаунта<input id="forgotEmail" type="email" required placeholder="name@example.com"></label><button class="primary-btn" type="submit">Получить код</button><button class="auth-link" type="button" id="forgotBack">Назад ко входу</button></form>
+  <form id="resetForm" class="auth-form hidden"><label>Код из письма<input id="resetCode" inputmode="numeric" maxlength="6" required placeholder="123456"></label><label>Новый пароль<input id="resetPassword" type="password" minlength="8" required placeholder="Минимум 8 символов"></label><button class="primary-btn" type="submit">Сменить пароль</button></form>
+  <form id="verifyForm" class="auth-form hidden"><label>Код из письма<input id="verifyCode" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required placeholder="123456"></label><button class="primary-btn" type="submit">Подтвердить почту</button><button class="auth-link" type="button" id="resendCode">Отправить код повторно</button><button class="auth-link" type="button" id="backToLogin">Назад ко входу</button></form>
+  <div id="authNotice" class="auth-notice" role="status"></div><small class="auth-footnote">Пароль хранится в виде криптографического хеша. Никому его не показываем.</small>
+</div></div>
+<div class="app-shell auth-locked">
+  <aside class="rail">
+    <div class="brand-mark">V<span>●</span></div>
+    <button class="rail-btn active" data-page="home" title="Начало">⌂</button>
+    <button class="rail-btn" data-page="discover" title="Найти комнаты">⌕</button>
+    <div class="rail-spacer"></div>
+    <button class="rail-btn" data-page="settings" title="Настройки">⚙</button>
+    <button class="avatar-button" id="railProfile" title="Профиль">Г</button>
+  </aside>
+  <aside class="sidebar">
+    <div class="sidebar-top"><div><div class="eyebrow">VOICE COMMUNITY</div><h1>Голосовая</h1></div><span class="online-dot"></span></div>
+    <div class="nav-caption">ПРОСТРАНСТВО</div>
+    <button class="side-link selected" data-page="home"><span>⌂</span> Начало</button>
+    <button class="side-link" data-page="discover"><span>⌕</span> Найти комнату</button>
+    <button class="side-link" data-page="settings"><span>⚙</span> Настройки</button>
+    <button class="side-link" data-page="profile"><span>◎</span> Мой профиль</button>
+    <div class="section-line"><span>ГОЛОСОВЫЕ КОМНАТЫ</span><button id="newRoomMini" class="tiny-plus" title="Создать комнату">＋</button></div>
+    <div id="roomNav" class="room-nav"><div class="muted small">Загрузка комнат…</div></div>
+    <div class="sidebar-bottom"><div class="self-card"><div class="avatar" id="sideAvatar">Г</div><div class="self-meta"><b id="sideName">Гость</b><span id="sideStatus">В сети</span></div><button class="icon-btn" data-page="profile" title="Профиль">⋯</button></div></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div class="crumb"><span>VoiceChat</span><b>/</b><strong id="topTitle">Начало</strong></div><div class="top-actions"><span class="connection-pill"><i></i><span id="connectionText">Подключение…</span></span><button class="icon-btn" id="inviteTop" title="Пригласить">↗</button></div></header>
+    <section class="page active" id="page-home">
+      <div id="startLobby" class="start-lobby">
+        <div class="start-intro">
+          <div class="eyebrow accent">VOICE COMMUNITY</div>
+          <h2>Начальное лобби</h2>
+          <p>Создай собственную голосовую комнату или присоединись к уже существующей.</p>
+        </div>
+        <div class="start-actions">
+          <button class="start-action start-create" id="startCreate">
+            <span class="start-action-icon">＋</span>
+            <span><b>Создать комнату</b><small>Открой голосовую комнату и пригласи друзей</small></span>
+            <i>›</i>
+          </button>
+          <button class="start-action start-join" id="startJoin">
+            <span class="start-action-icon">⌕</span>
+            <span><b>Присоединиться</b><small>Найди комнату в списке или введи код приглашения</small></span>
+            <i>›</i>
+          </button>
+        </div>
+        <div class="start-foot"><span class="online-dot"></span> Ты пока не подключён к голосовой комнате</div>
+      </div>
+      <div id="roomWorkspace" class="hidden">
+      <div class="hero"><div><div class="eyebrow accent">ТВОЁ ГОЛОСОВОЕ ПРОСТРАНСТВО</div><h2 id="roomHeading">Голосовая комната</h2><p id="roomSub">Ты находишься в голосовой комнате.</p></div><div class="hero-orb"><span>◖</span><i></i></div></div>
+      <div class="content-grid"><div class="primary-column">
+        <div class="panel room-panel"><div class="panel-heading"><div><h3>Участники</h3><p><span id="memberCount">1</span> в голосовом чате</p></div><span class="live-tag"><i></i> LIVE</span></div><div id="participants" class="participants"><div class="participant-skeleton"></div></div>
+          <div class="voice-controls"><button class="control-btn" id="micBtn"><span>♩</span><small>Микрофон</small></button><button class="control-btn" id="deafenBtn"><span>◖</span><small>Звук</small></button><button class="control-btn" id="leaveBtn"><span>⇥</span><small>В лобби</small></button><button class="control-btn primary-control" id="inviteBtn"><span>↗</span><small>Пригласить</small></button></div>
+        </div>
+        <div class="panel chat-panel"><div class="panel-heading"><div><h3>Чат комнаты</h3><p>Сообщения участников</p></div><span class="muted small">ТЕКСТ</span></div><div id="messages" class="messages"><div class="empty-chat">Пока тихо. Даже подозрительно.</div></div><form id="chatForm" class="chat-form"><div class="emoji-wrap"><button type="button" id="emojiToggle" class="emoji-toggle" title="Эмодзи">☺</button><div id="emojiPicker" class="emoji-picker hidden"></div></div><input id="chatInput" maxlength="500" placeholder="Написать сообщение…" autocomplete="off"><button type="submit">Отправить <span>↗</span></button></form></div>
+      </div><div class="right-column"><div class="panel quick-panel"><div class="panel-heading"><div><h3>Быстрый доступ</h3><p>Подключайся удобным способом</p></div></div><button class="quick-action" data-page="discover"><span class="quick-icon">⌕</span><span><b>Найти комнату</b><small>Каталог и поиск</small></span><i>›</i></button><button class="quick-action" id="quickInvite"><span class="quick-icon violet">↗</span><span><b>Войти по приглашению</b><small>Ссылка или код комнаты</small></span><i>›</i></button><button class="quick-action" id="quickCreate"><span class="quick-icon green">＋</span><span><b>Создать комнату</b><small>Собери свою компанию</small></span><i>›</i></button></div>
+        <div class="panel tip-panel"><div class="tip-icon">✦</div><div><b>Небольшая подсказка</b><p>Разреши браузеру доступ к микрофону. Для звонков через интернет сайт должен работать по HTTPS.</p></div></div>
+      </div></div>
+      </div>
+    </section>
+    <section class="page" id="page-discover"><div class="page-heading"><div><div class="eyebrow accent">ОТКРЫТЫЕ ПРОСТРАНСТВА</div><h2>Найти комнату</h2><p>Выбери голосовую комнату или подключись по приглашению.</p></div><button class="primary-btn" id="createRoomBtn">＋ Создать комнату</button></div>
+      <div class="panel discover-tools"><div class="search-box"><span>⌕</span><input id="roomSearch" placeholder="Поиск по названию комнаты…"></div><button class="secondary-btn" id="joinCodeBtn">Ввести код / ссылку</button></div><div id="roomCards" class="room-cards"></div>
+      <div class="panel direct-panel"><div class="direct-symbol">↗</div><div class="direct-copy"><h3>Есть адрес сервера?</h3><p>Подключение к своему VoiceChat Web серверу по адресу.</p></div><div class="direct-form"><input id="serverAddress" placeholder="https://voice.example.com или localhost:8787"><button id="connectServerBtn" class="secondary-btn">Открыть</button></div></div>
+    </section>
+    <section class="page" id="page-settings"><div class="page-heading"><div><div class="eyebrow accent">ПЕРСОНАЛИЗАЦИЯ</div><h2>Настройки</h2><p>Устройства, звук и внешний вид приложения.</p></div></div>
+      <div class="settings-layout"><div class="settings-tabs"><button class="settings-tab active" data-settings="audio">♫ Звук</button><button class="settings-tab" data-settings="devices">▣ Устройства</button><button class="settings-tab" data-settings="appearance">◐ Внешний вид</button></div>
+      <div class="panel settings-panel"><div id="settings-audio" class="settings-section active"><h3>Звук</h3><p class="settings-desc">Управляй громкостью и поведением голосового чата.</p><label class="setting-row"><span><b>Громкость собеседников</b><small>Общая громкость входящего звука</small></span><input id="outputVolume" type="range" min="0" max="100" value="100"><strong id="outputVolumeVal">100%</strong></label><label class="setting-row"><span><b>Чувствительность микрофона</b><small>Уровень входящего сигнала</small></span><input id="micGain" type="range" min="0" max="200" value="100"><strong id="micGainVal">100%</strong></label><label class="toggle-row"><span><b>Шумоподавление браузера</b><small>Эхо и фоновые шумы при захвате микрофона</small></span><input id="noiseToggle" type="checkbox" checked><i></i></label></div>
+      <div id="settings-devices" class="settings-section"><h3>Устройства</h3><p class="settings-desc">Выбери микрофон и устройство вывода. Список доступен после разрешения микрофона.</p><label class="field-label">Микрофон<input id="micDevice" class="select-input" list="micOptions" placeholder="По умолчанию"><datalist id="micOptions"></datalist></label><label class="field-label">Устройство вывода<input id="speakerDevice" class="select-input" list="speakerOptions" placeholder="По умолчанию"><datalist id="speakerOptions"></datalist></label><button class="secondary-btn" id="refreshDevices">Обновить устройства</button></div>
+      <div id="settings-appearance" class="settings-section"><h3>Внешний вид</h3><p class="settings-desc">Выбери оформление интерфейса.</p><div class="theme-options"><button class="theme-choice selected" data-theme="dark"><span class="theme-preview dark-preview"></span><b>Тёмная</b></button><button class="theme-choice" data-theme="light"><span class="theme-preview light-preview"></span><b>Светлая</b></button></div></div></div></div>
+    </section>
+    <section class="page" id="page-profile"><div class="page-heading"><div><div class="eyebrow accent">ТВОЯ УЧЁТНАЯ ЗАПИСЬ</div><h2>Профиль</h2><p>Как тебя видят другие участники.</p></div></div><div class="panel profile-panel"><div class="profile-cover"></div><div class="profile-editor"><div class="profile-avatar-wrap"><div class="profile-avatar" id="profileAvatarPreview">Г</div><label class="avatar-upload">Изменить фото<input id="avatarFile" type="file" accept="image/*" hidden></label></div><div class="profile-fields"><label class="field-label">Email аккаунта<input id="profileEmail" readonly></label><label class="field-label">Отображаемое имя<input id="profileName" maxlength="32" placeholder="Твоё имя"></label><label class="field-label">Статус<input id="profileStatus" maxlength="32" placeholder="В сети"></label><button class="primary-btn" id="saveProfile">Сохранить профиль</button><button class="secondary-btn" id="logoutBtn" type="button">Выйти из аккаунта</button></div></div></div></section>
+  </main>
+</div>
+<div id="modalBackdrop" class="modal-backdrop hidden"><div class="modal"><button class="modal-close" id="modalClose">×</button><div class="eyebrow accent" id="modalEyebrow">VOICECHAT</div><h3 id="modalTitle">Создать комнату</h3><p id="modalText">Придумай название для своей комнаты.</p><form id="modalForm"><input id="modalInput" maxlength="48" placeholder="Название комнаты"><button class="primary-btn" type="submit" id="modalSubmit">Продолжить</button></form></div></div>
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script></body></html>

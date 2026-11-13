@@ -1,0 +1,9 @@
+{
+  "name": "voicechat-web",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Browser voice chat with email accounts, realtime chat and WebRTC",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=20" },
+  "dependencies": { "nodemailer": "^6.9.16" }
+}

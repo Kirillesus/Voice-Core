@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "email": "dwaawd@email.ciom",
+      "salt": "0e05c0c09f5e866e28a3b79471a2e29f",
+      "hash": "9ce17df0f797126148bbf6a3c4f7e8a51b8023379514245b1662121d99e93389fe1f38936a00b15512e8d11beb40cb7c1c8cb3547f49f68e9d46f56201493e41",
+      "passwordHash": "9ce17df0f797126148bbf6a3c4f7e8a51b8023379514245b1662121d99e93389fe1f38936a00b15512e8d11beb40cb7c1c8cb3547f49f68e9d46f56201493e41",
+      "name": "awd",
+      "status": "В сети",
+      "avatar": "",
+      "verified": true,
+      "createdAt": 1794584466065
+    },
+    {
+      "email": "aeflkpksefiosfeji@gmaiul.vopm",
+      "salt": "a838aa1667e9b9394945a2a5871cdd05",
+      "hash": "7ad113b8a41d8b8748c7ab448a1fd7357044609f7d5cf18ca71ea99d2b47dec42cb89619bfebe4e1cb8f25fd28c15051bb1c8c5c613517564e7c61c0a2748ecb",
+      "passwordHash": "7ad113b8a41d8b8748c7ab448a1fd7357044609f7d5cf18ca71ea99d2b47dec42cb89619bfebe4e1cb8f25fd28c15051bb1c8c5c613517564e7c61c0a2748ecb",
+      "name": "efsef",
+      "status": "В сети",
+      "avatar": "",
+      "verified": true,
+      "createdAt": 1794584536496
+    }
+  ],
+  "sessions": [
+    [
+      "35f9d1f7c5b7e7f860f8b750d307e38058d7224625263b9e02e6fe778529ed5a",
+      {
+        "email": "dwaawd@email.ciom",
+        "expires": 1797176466813
+      }
+    ],
+    [
+      "8c8ced467649e30fdfdec359ed9e698b8493a4d4759332a1a6fb0febee464662",
+      {
+        "email": "aeflkpksefiosfeji@gmaiul.vopm",
+        "expires": 1797176537124
+      }
+    ]
+  ]
+}
